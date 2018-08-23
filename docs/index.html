@@ -23,6 +23,16 @@
 		main pre mark { background: rgba(236,69,0,0.2); font-weight: bold; display: inline-block; padding: 0 3px; }
 		footer { padding: 20px; background: #F7F7F7; }
 		footer p { font-size: 0.75em; }
+
+		.conveyor { margin: 0 -20px; padding: 0; }
+		.conveyor li { display: table-cell; }
+		.conveyor li img { height: 600px; width: auto; max-width: inherit; }
+		@media only screen and (max-width: 768px) {
+			.conveyor li img { height: 450px; width: auto; }
+		}
+		@media only screen and (max-width: 640px) {
+			.conveyor li img { height: 300px; width: auto; }
+		}
 	</style>
 
 </head>
@@ -37,10 +47,60 @@
 		<section>
 			<h2>Default</h2>
 <div><pre data-type="javascript"><code>
+let conveyor = new mgnConveyor("<mark>.j-conveyor</mark>");
+
+let btn = document.getElementById('btn');
+
+btn.onclick = () => {
+    conveyor.flag ? conveyor.Stop() : conveyor.Start();
+}
 </code></pre></div>
 <div><pre data-type="HTML"><code>
+&lt;ul class="<mark>j-conveyor</mark>"&gt;
+    &lt;li&gt;&lt;img src="images/img.jpg" alt=""&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;img src="images/img3.jpg" alt=""&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;img src="images/img2.jpg" alt=""&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;button id="btn"&gt;stop / start&lt;/button&gt;
+</code></pre></div>
+<div><pre data-type="css"><code>
+.j-conveyor li { display: table-cell; }
+.j-conveyor li img { height: 600px; width: auto; max-width: inherit; }
+@media only screen and (max-width: 768px) {
+	.j-conveyor li img { height: 450px; width: auto; }
+}
+@media only screen and (max-width: 640px) {
+	.j-conveyor li img { height: 300px; width: auto; }
+}
 </code></pre></div>
 
+			<ul class="conveyor j-conveyor">
+			    <li><img src="images/img.jpg" alt=""></li>
+			    <li><img src="images/img3.jpg" alt=""></li>
+			    <li><img src="images/img2.jpg" alt=""></li>
+			</ul>
+
+			<button id="btn">stop / start</button>
+
+		</section>
+
+		<section>
+			<h2>Option</h2>
+<div><pre data-type="javascript"><code>
+new mgnConveyor(
+    ".j-conveyor2",
+    <mark>{</mark>
+    <mark>    speed: 100</mark>
+    <mark>}</mark>
+);
+</code></pre></div>
+
+			<ul class="conveyor j-conveyor2">
+			    <li><img src="images/img.jpg" alt=""></li>
+			    <li><img src="images/img3.jpg" alt=""></li>
+			    <li><img src="images/img2.jpg" alt=""></li>
+			</ul>
 
 		</section>
 
